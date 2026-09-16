@@ -1,0 +1,6 @@
+Algorithm,Avg Error (m),Max Error (m),P95 Error (m),Median Error (m),Std Error (m),Availability (%),Adversary Error (m)
+Base k-Anon,94.9,848.74,456.84,0.0,178.83,100.0,25.73
+Dist-Bounded k-Anon,90.69,783.04,433.1,0.0,166.72,100.0,27.73
+Adaptive k-Anon,82.88,672.49,395.17,0.0,153.48,100.0,25.7
+Base DP,728.71,3024.37,1808.73,649.66,536.21,100.0,209.57
+Clipped DP,619.0,1309.96,1112.61,647.37,341.81,100.0,186.78

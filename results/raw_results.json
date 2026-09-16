@@ -1,0 +1,67 @@
+{
+  "base_k_anon": {
+    "metrics": {
+      "total_reports": 400,
+      "available_reports": 400,
+      "availability": 1.0,
+      "avg_location_error": 94.9,
+      "max_location_error": 848.74,
+      "p95_location_error": 456.84,
+      "median_location_error": 0.0,
+      "std_location_error": 178.83
+    },
+    "adversary_error": 25.73
+  },
+  "dist_bounded": {
+    "metrics": {
+      "total_reports": 400,
+      "available_reports": 400,
+      "availability": 1.0,
+      "avg_location_error": 90.69,
+      "max_location_error": 783.04,
+      "p95_location_error": 433.1,
+      "median_location_error": 0.0,
+      "std_location_error": 166.72
+    },
+    "adversary_error": 27.73
+  },
+  "adaptive_k_anon": {
+    "metrics": {
+      "total_reports": 400,
+      "available_reports": 400,
+      "availability": 1.0,
+      "avg_location_error": 82.88,
+      "max_location_error": 672.49,
+      "p95_location_error": 395.17,
+      "median_location_error": 0.0,
+      "std_location_error": 153.48
+    },
+    "adversary_error": 25.7
+  },
+  "base_dp": {
+    "metrics": {
+      "total_reports": 400,
+      "available_reports": 400,
+      "availability": 1.0,
+      "avg_location_error": 728.71,
+      "max_location_error": 3024.37,
+      "p95_location_error": 1808.73,
+      "median_location_error": 649.66,
+      "std_location_error": 536.21
+    },
+    "adversary_error": 209.57
+  },
+  "clipped_dp": {
+    "metrics": {
+      "total_reports": 400,
+      "available_reports": 400,
+      "availability": 1.0,
+      "avg_location_error": 619.0,
+      "max_location_error": 1309.96,
+      "p95_location_error": 1112.61,
+      "median_location_error": 647.37,
+      "std_location_error": 341.81
+    },
+    "adversary_error": 186.78
+  }
+}
