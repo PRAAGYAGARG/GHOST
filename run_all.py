@@ -19,7 +19,6 @@ from evaluation.compare import (
     ensure_dirs,
     plot_error_comparison,
     plot_privacy_utility,
-    plot_availability,
     plot_radar,
     plot_error_distribution,
     plot_graph,
@@ -180,10 +179,20 @@ def main():
     print("  Generating figures...")
     plot_error_comparison(all_metrics, FIG_DIR)
     plot_privacy_utility(all_metrics, adversary_errors, FIG_DIR)
-    plot_availability(all_metrics, FIG_DIR)
     plot_radar(all_metrics, adversary_errors, FIG_DIR)
     plot_error_distribution(all_raw_results, FIG_DIR)
     plot_graph(nodes, edges, snapshots[0], FIG_DIR)
+
+    # Remove figures retired by the current numbering from earlier runs.
+    for retired_name in (
+        "fig3_availability_comparison.png",
+        "fig4_radar_chart.png",
+        "fig5_error_distribution.png",
+        "fig6_graph_visualization.png",
+    ):
+        retired_figure = os.path.join(FIG_DIR, retired_name)
+        if os.path.exists(retired_figure):
+            os.remove(retired_figure)
 
     print("\n  Generating tables...")
     save_comparison_table(all_metrics, adversary_errors, TABLE_DIR)
@@ -209,7 +218,7 @@ def main():
     print(f"|  ALL DONE in {elapsed:.1f}s{' ' * (48 - len(f'{elapsed:.1f}'))}|")
     print("|                                                              |")
     print("|  Outputs:                                                    |")
-    print("|    * results/figures/    -> 6 comparison plots               |")
+    print("|    * results/figures/    -> 5 comparison plots               |")
     print("|    * results/tables/     -> CSV comparison table             |")
     print("|    * outputs/            -> Summary report (Markdown)        |")
     print("=" * 64)

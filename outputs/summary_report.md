@@ -26,10 +26,9 @@ All figures are saved in `results/figures/`:
 
 1. **fig1_error_comparison.png** - Bar chart comparing avg/max/P95 error
 2. **fig2_privacy_utility_tradeoff.png** - Privacy vs utility scatter plot
-3. **fig3_availability_comparison.png** - Report availability comparison
-4. **fig4_radar_chart.png** - Multi-metric radar comparison
-5. **fig5_error_distribution.png** - Per-user error distribution box plots
-6. **fig6_graph_visualization.png** - Synthetic graph with device locations
+3. **fig3_radar_chart.png** - Multi-metric radar comparison
+4. **fig4_error_distribution.png** - Per-user error distribution box plots
+5. **fig5_graph_visualization.png** - Synthetic graph with device locations on the supplied campus map
 
 ## Key Findings
 

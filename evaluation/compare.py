@@ -135,37 +135,7 @@ def plot_privacy_utility(all_metrics, adversary_errors, fig_dir):
 
 
 # -----------------------------------------------------------------------
-# Figure 3: Availability Comparison
-# -----------------------------------------------------------------------
-def plot_availability(all_metrics, fig_dir):
-    algos = list(all_metrics.keys())
-    labels = [ALGO_LABELS.get(a, a) for a in algos]
-    colors = [ALGO_COLORS.get(a, "#999") for a in algos]
-    avails = [all_metrics[a].get("availability", 0) * 100 for a in algos]
-
-    fig, ax = plt.subplots(figsize=(10, 5))
-    bars = ax.bar(labels, avails, color=colors, edgecolor="white",
-                  linewidth=1.5, alpha=0.9)
-
-    for bar, val in zip(bars, avails):
-        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
-                f"{val:.1f}%", ha="center", va="bottom",
-                fontsize=11, fontweight="bold")
-
-    ax.set_ylabel("Availability (%)")
-    ax.set_title("GHOST - Report Availability Comparison")
-    ax.set_ylim(0, 115)
-    ax.axhline(y=100, color="gray", linestyle="--", alpha=0.4, linewidth=1)
-
-    plt.tight_layout()
-    path = os.path.join(fig_dir, "fig3_availability_comparison.png")
-    plt.savefig(path)
-    plt.close()
-    print(f"  * Saved {path}")
-
-
-# -----------------------------------------------------------------------
-# Figure 4: Radar Chart
+# Figure 3: Radar Chart
 # -----------------------------------------------------------------------
 def plot_radar(all_metrics, adversary_errors, fig_dir):
     categories = ["Privacy\n(Adv. Error)", "Avg Error\n(Lower=Better)",
@@ -227,14 +197,14 @@ def plot_radar(all_metrics, adversary_errors, fig_dir):
     ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1))
 
     plt.tight_layout()
-    path = os.path.join(fig_dir, "fig4_radar_chart.png")
+    path = os.path.join(fig_dir, "fig3_radar_chart.png")
     plt.savefig(path)
     plt.close()
     print(f"  * Saved {path}")
 
 
 # -----------------------------------------------------------------------
-# Figure 5: Error Distribution Box Plots
+# Figure 4: Error Distribution Box Plots
 # -----------------------------------------------------------------------
 def plot_error_distribution(all_raw_results, fig_dir):
     algos = list(all_raw_results.keys())
@@ -266,28 +236,37 @@ def plot_error_distribution(all_raw_results, fig_dir):
     ax.set_title("GHOST - Per-User Error Distribution by Algorithm")
 
     plt.tight_layout()
-    path = os.path.join(fig_dir, "fig5_error_distribution.png")
+    path = os.path.join(fig_dir, "fig4_error_distribution.png")
     plt.savefig(path)
     plt.close()
     print(f"  * Saved {path}")
 
 
 # -----------------------------------------------------------------------
-# Figure 6: Graph Visualization
+# Figure 5: Graph Visualization
 # -----------------------------------------------------------------------
 def plot_graph(nodes, edges, snapshot, fig_dir):
     fig, ax = plt.subplots(figsize=(10, 10))
 
-    # Draw edges
     coords = {n["id"]: (n["x"], n["y"]) for n in nodes}
+    all_x = [n["x"] for n in nodes]
+    all_y = [n["y"] for n in nodes]
+
+    # Place the supplied campus map underneath the graph without altering
+    # its nodes, edges, or device markers.
+    map_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                            "assets", "vit_campus_map.png")
+    campus_map = plt.imread(map_path)
+    ax.imshow(campus_map, extent=(min(all_x), max(all_x), min(all_y), max(all_y)),
+              aspect="auto", zorder=0)
+
+    # Draw edges
     for e in edges:
         x1, y1 = coords[e["source"]]
         x2, y2 = coords[e["target"]]
         ax.plot([x1, x2], [y1, y2], color="#CCCCCC", linewidth=0.6, zorder=1)
 
     # Draw all nodes
-    all_x = [n["x"] for n in nodes]
-    all_y = [n["y"] for n in nodes]
     ax.scatter(all_x, all_y, c="#AABBCC", s=15, zorder=2, alpha=0.6,
                edgecolors="white", linewidths=0.3)
 
@@ -305,7 +284,7 @@ def plot_graph(nodes, edges, snapshot, fig_dir):
     ax.set_aspect("equal")
 
     plt.tight_layout()
-    path = os.path.join(fig_dir, "fig6_graph_visualization.png")
+    path = os.path.join(fig_dir, "fig5_graph_visualization.png")
     plt.savefig(path)
     plt.close()
     print(f"  * Saved {path}")
@@ -392,10 +371,9 @@ def generate_summary_report(all_metrics, adversary_errors, output_dir):
     lines.append("")
     lines.append("1. **fig1_error_comparison.png** - Bar chart comparing avg/max/P95 error")
     lines.append("2. **fig2_privacy_utility_tradeoff.png** - Privacy vs utility scatter plot")
-    lines.append("3. **fig3_availability_comparison.png** - Report availability comparison")
-    lines.append("4. **fig4_radar_chart.png** - Multi-metric radar comparison")
-    lines.append("5. **fig5_error_distribution.png** - Per-user error distribution box plots")
-    lines.append("6. **fig6_graph_visualization.png** - Synthetic graph with device locations")
+    lines.append("3. **fig3_radar_chart.png** - Multi-metric radar comparison")
+    lines.append("4. **fig4_error_distribution.png** - Per-user error distribution box plots")
+    lines.append("5. **fig5_graph_visualization.png** - Synthetic graph with device locations on the supplied campus map")
     lines.append("")
 
     lines.append("## Key Findings")

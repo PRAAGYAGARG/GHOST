@@ -89,13 +89,12 @@ GHOST/
 │   └── compare.py                     ← Cross-algorithm figures & tables
 │
 ├── results/                           ← (auto-generated) Output directory
-│   ├── figures/                       ← 6 comparison plots (PNG)
+│   ├── figures/                       ← 5 comparison plots (PNG)
 │   │   ├── fig1_error_comparison.png
 │   │   ├── fig2_privacy_utility_tradeoff.png
-│   │   ├── fig3_availability_comparison.png
-│   │   ├── fig4_radar_chart.png
-│   │   ├── fig5_error_distribution.png
-│   │   └── fig6_graph_visualization.png
+│   │   ├── fig3_radar_chart.png
+│   │   ├── fig4_error_distribution.png
+│   │   └── fig5_graph_visualization.png
 │   ├── tables/
 │   │   └── comparison_table.csv       ← Full metrics CSV
 │   └── raw_results.json               ← Raw metrics JSON
@@ -193,10 +192,9 @@ Algorithm              Avg Err(m)  Max Err(m)  P95 Err(m)  Avail(%)  Adv Err(m)
 |--------|--------------|
 | `fig1_error_comparison.png` | Bar chart comparing average, P95, and maximum location error across all 5 algorithms |
 | `fig2_privacy_utility_tradeoff.png` | Scatter plot showing the fundamental tradeoff — privacy (adversary error) on Y-axis vs utility loss (location error) on X-axis |
-| `fig3_availability_comparison.png` | Bar chart showing what percentage of reports each algorithm successfully generates |
-| `fig4_radar_chart.png` | Spider/radar chart showing all 5 metrics for all algorithms on a single normalised scale |
-| `fig5_error_distribution.png` | Box plots showing the distribution of per-user errors — reveals outliers and consistency |
-| `fig6_graph_visualization.png` | The synthetic road network with IoT device positions marked in red |
+| `fig3_radar_chart.png` | Spider/radar chart showing all 5 metrics for all algorithms on a single normalised scale |
+| `fig4_error_distribution.png` | Box plots showing the distribution of per-user errors — reveals outliers and consistency |
+| `fig5_graph_visualization.png` | The synthetic road network with IoT device positions marked in red, over the supplied campus map |
 
 ### Tables (in `results/tables/`)
 - `comparison_table.csv` — Full metrics comparison in CSV format
